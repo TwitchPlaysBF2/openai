@@ -46,7 +46,7 @@ Your Organization ID comes from here --> https://platform.openai.com/account/org
 ```csharp
 var openAiService = new OpenAIService(new OpenAiOptions()
 {
-    ApiKey =  Environment.GetEnvironmentVariable("MY_OPEN_AI_API_KEY")
+    ApiKey =  Environment.GetEnvironmentVariable("MY_OPEN_AI_API_KEY", EnvironmentVariableTarget.User)
 });
 ```
 ### Using dependency injection:
@@ -70,7 +70,7 @@ serviceCollection.AddOpenAIService();
 Use it like below but do NOT put your API key directly to your source code. 
 #### Program.cs
 ```csharp
-serviceCollection.AddOpenAIService(settings => { settings.ApiKey = Environment.GetEnvironmentVariable("MY_OPEN_AI_API_KEY"); });
+serviceCollection.AddOpenAIService(settings => { settings.ApiKey = Environment.GetEnvironmentVariable("MY_OPEN_AI_API_KEY", EnvironmentVariableTarget.User); });
 ```
 
 After injecting your service you will be able to get it from service provider
